@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stefan Holz — Curator AI</title>
+  <meta name="description" content="Drei Pakete. Ein System. Wir transformieren vage Beratung in skalierbare Assets."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#5f5e5e',
+            'primary-dim': '#535252',
+            'on-primary': '#faf7f6',
+            'on-background': '#2d3435',
+            'on-surface-variant': '#5a6061',
+            'surface': '#f9f9f9',
+            'surface-container-low': '#f2f4f4',
+            'surface-container-lowest': '#ffffff',
+            'surface-container': '#ebeeef',
+            'outline-variant': '#adb3b4',
+            'tertiary': '#785a1a',
+            'tertiary-dim': '#6b4e0e',
+            'tertiary-fixed': '#fbd185',
+            'tertiary-fixed-dim': '#ecc479',
+            'on-tertiary': '#fff8f1',
+            'on-tertiary-container': '#624604',
+          },
+          fontFamily: {
+            'headline': ['"Newsreader"', 'serif'],
+            'body': ['"Manrope"', 'sans-serif'],
+            'label': ['"Manrope"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { background: #f9f9f9; overflow-x: hidden; font-family: 'Manrope', sans-serif; color: #2d3435; }
+    ::selection { background: #fbd185; color: #624604; }
+    .font-serif-italic { font-family: 'Newsreader', serif; font-style: italic; font-weight: 300; }
+    .editorial-img { filter: saturate(0.92) contrast(1.02); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .cloud-hover { transition: box-shadow 0.5s; }
+    .cloud-hover:hover { box-shadow: 0 20px 80px rgba(45,52,53,0.06); }
+    .ambient-glow { position: absolute; top: -120px; right: -120px; width: 280px; height: 280px; border-radius: 50%; background: rgba(120,90,26,0.08); filter: blur(80px); pointer-events: none; }
+
+    @media (max-width: 1023px) {
+      .nav-links { display: none !important; }
+      .nav-cta-desktop { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════ NAV ═══════════════════ -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-[100] transition-shadow duration-400" style="background: rgba(249,249,249,0.82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 flex justify-between items-center h-[72px]">
+      <a href="#" class="flex flex-col leading-none no-underline">
+        <span class="font-headline text-[1.15rem] text-on-background tracking-[-0.01em]">Stefan Holz</span>
+        <span class="font-label text-[9px] uppercase tracking-[0.22em] text-outline-variant mt-[3px]">Curator AI</span>
+      </a>
+      <div class="nav-links flex gap-10 items-center">
+        <a href="#offer" class="font-label text-[11px] font-semibold tracking-[0.18em] uppercase no-underline text-on-background border-b-2 border-tertiary-fixed-dim pb-1 transition-colors duration-300">Offer</a>
+        <a href="#cases" class="font-label text-[11px] font-semibold tracking-[0.18em] uppercase no-underline text-outline-variant border-b-2 border-transparent pb-1 transition-colors duration-300 hover:text-on-background">Cases</a>
+        <a href="#about" class="font-label text-[11px] font-semibold tracking-[0.18em] uppercase no-underline text-outline-variant border-b-2 border-transparent pb-1 transition-colors duration-300 hover:text-on-background">About</a>
+      </div>
+      <a href="#contact" class="nav-cta-desktop inline-flex items-center h-10 px-6 bg-primary text-on-primary font-label text-[11px] font-bold tracking-[0.18em] uppercase no-underline hover:bg-primary-dim transition-all duration-300">Start Project</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <header class="bg-surface pt-36 pb-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 items-end">
+      <div class="reveal">
+        <span class="text-tertiary font-label text-[11px] uppercase tracking-[0.22em] mb-5 block">Productization Strategy</span>
+        <h1 class="font-headline text-on-background leading-[1.05] tracking-[-0.01em] m-0" style="font-size: clamp(3rem,7vw,7rem); font-weight: 400;">
+          Drei Pakete.<br/><span class="font-serif-italic">Ein System.</span>
+        </h1>
+      </div>
+      <div class="reveal pb-2" data-delay="0.15">
+        <p class="font-body text-[18px] leading-[1.65] text-on-surface-variant border-l-2 border-outline-variant/25 pl-8">
+          Wir transformieren vage Beratung in skalierbare Assets. Unsere Pakete sind darauf ausgelegt, Ihre operative Exzellenz mit KI-gest&uuml;tzter Autorit&auml;t zu verbinden.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════ PACKAGES ═══════════════════ -->
+  <section id="offer" class="bg-surface-container-low py-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Foundation -->
+      <div class="reveal cloud-hover bg-surface-container-lowest p-10 lg:p-12 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-12">
+            <span class="text-[28px] text-tertiary">&#9671;</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant opacity-60">Tier 01</span>
+          </div>
+          <h3 class="font-headline text-[2.2rem] leading-tight text-on-background mb-4" style="font-weight:400;">Foundation</h3>
+          <p class="font-body text-[14px] leading-[1.65] text-on-surface-variant mb-8">F&uuml;r etablierte Beratungen, die ihre internen Workflows durch KI-Infrastruktur skalierbar machen wollen.</p>
+          <div class="flex flex-col gap-5 mb-12">
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">01</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">System Audit & Mapping</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">02</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">Automation Implementation</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">03</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">Internal Workflow Training</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="border-t border-outline-variant/15 pt-8 mb-8">
+            <span class="font-headline text-[1.8rem] text-on-background" style="font-weight:400;">4k &ndash; 6k</span>
+            <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-[0.12em] mt-1">Einmalige Investition</span>
+          </div>
+          <button class="w-full py-4 font-body text-[11px] font-bold uppercase tracking-[0.18em] border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors duration-300 cursor-pointer bg-transparent">Select Foundation</button>
+        </div>
+      </div>
+
+      <!-- Identity (Dark) -->
+      <div class="reveal bg-primary text-on-primary p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden" data-delay="0.08">
+        <div class="ambient-glow"></div>
+        <div class="relative z-10">
+          <div class="flex justify-between items-start mb-12">
+            <span class="text-[28px] text-tertiary-fixed-dim">&#9678;</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.2em] text-on-primary/65">Tier 02</span>
+          </div>
+          <h3 class="font-headline text-[2.2rem] leading-tight text-on-primary mb-4" style="font-weight:400;">Identity</h3>
+          <p class="font-body text-[14px] leading-[1.65] text-on-primary/65 mb-8">Strategische Repositionierung als Marktf&uuml;hrer. Wir bauen nicht nur Tools, wir erschaffen Ihre visuelle und kognitive Autorit&auml;t.</p>
+          <div class="flex flex-col gap-5 mb-12">
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary-fixed-dim min-w-[20px]">01</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-primary">Strategic Brand Identity</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary-fixed-dim min-w-[20px]">02</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-primary">Premium Visual Design System</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary-fixed-dim min-w-[20px]">03</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-primary">Editorial Photography Direction</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary-fixed-dim min-w-[20px]">04</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-primary">Authority Content Assets</span>
+            </div>
+          </div>
+        </div>
+        <div class="relative z-10">
+          <div class="border-t border-on-primary/10 pt-8 mb-8">
+            <span class="font-headline text-[1.8rem] text-on-primary" style="font-weight:400;">8k &ndash; 12k</span>
+            <span class="font-body text-[10px] text-on-primary/65 block uppercase tracking-[0.12em] mt-1">Ganzheitliche Transformation</span>
+          </div>
+          <button class="w-full py-4 font-body text-[11px] font-bold uppercase tracking-[0.18em] bg-tertiary text-on-tertiary border-0 cursor-pointer transition-all duration-300 hover:bg-tertiary-dim">Elevate Identity</button>
+        </div>
+      </div>
+
+      <!-- Premium System -->
+      <div class="reveal cloud-hover bg-surface-container-lowest p-10 lg:p-12 flex flex-col justify-between" data-delay="0.16">
+        <div>
+          <div class="flex justify-between items-start mb-12">
+            <span class="text-[28px] text-tertiary">&#8734;</span>
+            <span class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant opacity-60">Tier 03</span>
+          </div>
+          <h3 class="font-headline text-[2.2rem] leading-tight text-on-background mb-4" style="font-weight:400;">Premium System</h3>
+          <p class="font-body text-[14px] leading-[1.65] text-on-surface-variant mb-8">Die ultimative Partnerschaft f&uuml;r skalierbare Akquise und Case-Performance. Ein End-to-End System f&uuml;r maximalen Impact.</p>
+          <div class="flex flex-col gap-5 mb-12">
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">01</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">Full Strategic Ecosystem</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">02</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">Case Development Engine</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">03</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">Ongoing Conversion Optimization</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="font-body text-[14px] font-bold text-tertiary min-w-[20px]">04</span>
+              <span class="font-body text-[13px] font-semibold uppercase tracking-tight text-on-background">Quarterly Authority Review</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="border-t border-outline-variant/15 pt-8 mb-8">
+            <span class="font-headline text-[1.8rem] text-on-background" style="font-weight:400;">12k &ndash; 15k</span>
+            <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-[0.12em] mt-1">Premium Partnership</span>
+          </div>
+          <button class="w-full py-4 font-body text-[11px] font-bold uppercase tracking-[0.18em] border border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors duration-300 cursor-pointer bg-transparent">Request Access</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ IMAGE BREAK ═══════════════════ -->
+  <section class="bg-surface py-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12">
+      <div class="reveal relative overflow-hidden" style="height: 560px;">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop"
+          alt="Minimalist office" class="w-full h-full object-cover editorial-img"/>
+        <div class="absolute inset-0" style="background: rgba(95,94,94,0.15);"></div>
+        <div class="absolute bottom-12 right-12 max-w-[420px] bg-surface-container-lowest p-12">
+          <p class="font-headline text-[1.7rem] italic leading-[1.3] text-on-background m-0" style="font-weight:300;">
+            &ldquo;Exzellenz ist kein Zufall, sondern das Ergebnis kuratierter Prozesse.&rdquo;
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CASE STUDY ═══════════════════ -->
+  <section id="cases" class="bg-surface-container-low py-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12">
+      <div class="reveal">
+        <span class="text-tertiary font-label text-[11px] uppercase tracking-[0.22em] mb-5 block">Ergebnis</span>
+        <h2 class="font-headline text-on-background leading-[1.1] m-0 max-w-[640px]" style="font-size: clamp(2.2rem,4.5vw,3.8rem); font-weight: 400;">
+          Vom manuellen Prozess<br/><span class="font-serif-italic">zum skalierbaren System.</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16 items-center">
+        <div class="reveal" data-delay="0.05">
+          <div class="overflow-hidden" style="aspect-ratio: 4/3;">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=85&auto=format&fit=crop"
+              alt="Case study" class="w-full h-full object-cover editorial-img"/>
+          </div>
+        </div>
+        <div class="reveal" data-delay="0.12">
+          <span class="font-body text-[10px] uppercase tracking-[0.2em] text-outline-variant block mb-8">
+            Maschinenbauer &middot; 120 MA &middot; DACH
+          </span>
+
+          <div class="mb-7">
+            <span class="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Ausgangslage</span>
+            <p class="font-body text-[16px] leading-[1.6] text-on-surface-variant mt-2">Manuelle Angebotserstellung, 4&ndash;6 Stunden pro Anfrage. Hoher Fehleranteil, keine systematische Nachverfolgung.</p>
+          </div>
+
+          <div class="mb-7">
+            <span class="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Ma&szlig;nahme</span>
+            <p class="font-body text-[16px] leading-[1.6] text-on-surface-variant mt-2">Automatisierte Angebotspipeline mit strukturierter Daten&uuml;bernahme, KI-gest&uuml;tzter Kalkulation und CRM-Anbindung.</p>
+          </div>
+
+          <div class="mb-7">
+            <span class="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Ergebnis</span>
+            <p class="font-body text-[16px] leading-[1.6] text-on-background font-semibold mt-2">Bearbeitungszeit &ndash;68%. Fehlerquote &ndash;90%. 3 FTE freigesetzt f&uuml;r strategische Aufgaben.</p>
+          </div>
+
+          <div class="flex gap-12 mt-2 pt-8 border-t border-outline-variant/15">
+            <div>
+              <span class="font-headline text-[1.8rem] text-tertiary" style="font-weight:400;">&ndash;68%</span>
+              <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-wider mt-1">Bearbeitungszeit</span>
+            </div>
+            <div>
+              <span class="font-headline text-[1.8rem] text-tertiary" style="font-weight:400;">&ndash;90%</span>
+              <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-wider mt-1">Fehlerquote</span>
+            </div>
+            <div>
+              <span class="font-headline text-[1.8rem] text-tertiary" style="font-weight:400;">3 FTE</span>
+              <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-wider mt-1">freigesetzt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PROCESS ═══════════════════ -->
+  <section class="bg-surface py-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16">
+      <div class="reveal">
+        <span class="text-tertiary font-label text-[11px] uppercase tracking-[0.22em] mb-5 block">Vorgehen</span>
+        <h2 class="font-headline text-on-background leading-[1.1] m-0" style="font-size: clamp(2.2rem,4vw,3.2rem); font-weight: 400;">
+          Drei Schritte.<br/><span class="font-serif-italic">Ein Ergebnis.</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="reveal" data-delay="0.05">
+          <span class="font-headline text-[2.5rem] text-tertiary leading-none" style="font-weight:400;">01</span>
+          <h3 class="font-headline text-[20px] text-on-background mt-4 mb-3" style="font-weight:400;">Analyse</h3>
+          <p class="font-body text-[14px] leading-[1.6] text-on-surface-variant">Prozesse verstehen, Potenziale identifizieren, klare Priorit&auml;ten setzen.</p>
+        </div>
+        <div class="reveal" data-delay="0.12">
+          <span class="font-headline text-[2.5rem] text-tertiary leading-none" style="font-weight:400;">02</span>
+          <h3 class="font-headline text-[20px] text-on-background mt-4 mb-3" style="font-weight:400;">Konzept</h3>
+          <p class="font-body text-[14px] leading-[1.6] text-on-surface-variant">Fahrplan entwickeln, Technologie ausw&auml;hlen, ROI berechnen.</p>
+        </div>
+        <div class="reveal" data-delay="0.19">
+          <span class="font-headline text-[2.5rem] text-tertiary leading-none" style="font-weight:400;">03</span>
+          <h3 class="font-headline text-[20px] text-on-background mt-4 mb-3" style="font-weight:400;">Umsetzung</h3>
+          <p class="font-body text-[14px] leading-[1.6] text-on-surface-variant">Schrittweise implementieren, testen, optimieren. Ergebnis sichern.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section class="bg-surface-container-low py-32">
+    <div class="max-w-[1200px] mx-auto px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16">
+      <div class="reveal">
+        <h2 class="font-headline text-on-background leading-[1.1] lg:sticky lg:top-32" style="font-size: clamp(2.2rem,4vw,3.2rem); font-weight: 400;">
+          Fragen zur<br/>Transformation.
+        </h2>
+      </div>
+      <div class="flex flex-col gap-16">
+        <div class="reveal" data-delay="0.05">
+          <span class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-tertiary block mb-4">01. Implementierung</span>
+          <p class="font-headline text-2xl text-on-background mb-3" style="font-weight:400;">Wie lange dauert die Integration?</p>
+          <p class="font-body text-[15px] leading-relaxed text-on-surface-variant">In der Regel ben&ouml;tigen wir f&uuml;r das Foundation-Paket 4&ndash;6 Wochen, w&auml;hrend das Identity-Paket aufgrund der visuellen und strategischen Tiefe etwa 8&ndash;12 Wochen in Anspruch nimmt.</p>
+        </div>
+        <div class="reveal" data-delay="0.05">
+          <span class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-tertiary block mb-4">02. ROI</span>
+          <p class="font-headline text-2xl text-on-background mb-3" style="font-weight:400;">Wann amortisiert sich das System?</p>
+          <p class="font-body text-[15px] leading-relaxed text-on-surface-variant">Unsere Kunden berichten von einer Reduzierung der manuellen administrativen Last um 40% innerhalb der ersten drei Monate nach Implementierung des Foundation-Systems.</p>
+        </div>
+        <div class="reveal" data-delay="0.05">
+          <span class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-tertiary block mb-4">03. Ownership</span>
+          <p class="font-headline text-2xl text-on-background mb-3" style="font-weight:400;">Wer besitzt die KI-Assets?</p>
+          <p class="font-body text-[15px] leading-relaxed text-on-surface-variant">Sie. Alle implementierten Workflows, Custom-GPTs und Datenbank-Strukturen gehen nach Projektabschluss vollst&auml;ndig in Ihr geistiges Eigentum &uuml;ber.</p>
+        </div>
+        <div class="reveal" data-delay="0.05">
+          <span class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-tertiary block mb-4">04. Flexibilit&auml;t</span>
+          <p class="font-headline text-2xl text-on-background mb-3" style="font-weight:400;">Kann ich sp&auml;ter upgraden?</p>
+          <p class="font-body text-[15px] leading-relaxed text-on-surface-variant">Absolut. Das Foundation-System ist der nukleare Kern. Viele Kunden starten dort und skalieren nach der ersten Effizienzsteigerung in die Identity-Phase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
+  <section id="about" class="bg-surface py-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-16 items-center">
+      <div class="reveal">
+        <div class="overflow-hidden" style="aspect-ratio: 3/4;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=85&auto=format&fit=crop"
+            alt="Portrait" class="w-full h-full object-cover editorial-img" style="object-position: center 20%;"/>
+        </div>
+      </div>
+      <div class="reveal" data-delay="0.1">
+        <span class="text-tertiary font-label text-[11px] uppercase tracking-[0.22em] mb-5 block">&Uuml;ber mich</span>
+        <h2 class="font-headline text-on-background leading-[1.1] mb-8" style="font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 400;">
+          Klarheit vor Komplexit&auml;t.<br/><span class="font-serif-italic">Wirkung vor Werkzeug.</span>
+        </h2>
+        <p class="font-body text-[16px] leading-[1.7] text-on-surface-variant mb-5">
+          Mein Ansatz beginnt nie bei der Technologie, sondern beim Problem. KI ist ein Werkzeug &mdash; kein Selbstzweck. Was z&auml;hlt, ist das Ergebnis: weniger Reibung, klarere Abl&auml;ufe, messbare Wirkung.
+        </p>
+        <p class="font-body text-[16px] leading-[1.7] text-on-surface-variant mb-10">
+          Seit &uuml;ber zehn Jahren arbeite ich mit Mittelst&auml;ndlern und B2B-Unternehmen. Ich bringe Struktur in das, was gewachsen ist &mdash; und sorge daf&uuml;r, dass Automatisierung nicht nur funktioniert, sondern sich tr&auml;gt.
+        </p>
+        <div class="flex gap-14 pt-8 border-t border-outline-variant/15">
+          <div>
+            <span class="font-headline text-[1.5rem] text-on-background" style="font-weight:400;">10+</span>
+            <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-[0.12em] mt-1">Jahre</span>
+          </div>
+          <div>
+            <span class="font-headline text-[1.5rem] text-on-background" style="font-weight:400;">B2B</span>
+            <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-[0.12em] mt-1">Fokus</span>
+          </div>
+          <div>
+            <span class="font-headline text-[1.5rem] text-on-background" style="font-weight:400;">DACH</span>
+            <span class="font-body text-[10px] text-on-surface-variant block uppercase tracking-[0.12em] mt-1">Region</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <section id="contact" class="bg-surface-container py-32">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <h2 class="font-headline text-on-background leading-[1.05] mb-12" style="font-size: clamp(3rem,7vw,6.5rem); font-weight: 400;">
+          Bereit f&uuml;r Autorit&auml;t?
+        </h2>
+      </div>
+      <div class="reveal" data-delay="0.1">
+        <div class="flex gap-8 justify-center items-center flex-wrap">
+          <a href="#" class="inline-flex items-center py-5 px-12 bg-primary text-on-primary font-label text-[11px] font-bold uppercase tracking-[0.2em] no-underline hover:bg-primary-dim transition-all duration-300">Erstgespr&auml;ch vereinbaren</a>
+          <a href="#cases" class="font-label text-[11px] font-bold uppercase tracking-[0.18em] text-on-background no-underline border-b-2 border-tertiary-fixed-dim pb-1">Portfolio ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="bg-surface-container-low">
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 flex justify-between items-start pt-16 pb-16 flex-wrap gap-12">
+      <div>
+        <a href="#" class="flex flex-col no-underline leading-none mb-5">
+          <span class="font-headline text-[18px] text-on-background">Stefan Holz</span>
+          <span class="font-label text-[9px] uppercase tracking-[0.22em] text-outline-variant mt-[6px]">Curator AI</span>
+        </a>
+        <p class="font-body text-[10px] uppercase tracking-[0.1em] text-outline-variant max-w-[280px] leading-[1.6]">
+          The Editorial Authority in Automation. Transforming Knowledge into Assets.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-12">
+        <div class="flex flex-col gap-4">
+          <span class="font-body text-[10px] uppercase tracking-[0.2em] text-outline-variant font-bold">Network</span>
+          <a href="#" class="font-body text-[11px] uppercase tracking-[0.15em] text-on-surface-variant no-underline hover:text-on-background transition-colors">LinkedIn</a>
+          <a href="#" class="font-body text-[11px] uppercase tracking-[0.15em] text-on-surface-variant no-underline hover:text-on-background transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col gap-4">
+          <span class="font-body text-[10px] uppercase tracking-[0.2em] text-outline-variant font-bold">Legal</span>
+          <a href="#" class="font-body text-[11px] uppercase tracking-[0.15em] text-on-surface-variant no-underline hover:text-on-background transition-colors">Privacy</a>
+          <a href="#" class="font-body text-[11px] uppercase tracking-[0.15em] text-on-surface-variant no-underline hover:text-on-background transition-colors">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-[1440px] mx-auto px-8 lg:px-12 pb-12">
+      <p class="font-body text-[10px] uppercase tracking-[0.1em] text-outline-variant">
+        &copy; 2026 Stefan Holz &middot; Curator AI. The Editorial Authority in Automation.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 1px 0 rgba(173,179,180,0.15)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    }, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          entry.target.style.transitionDelay = delay + 's';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
